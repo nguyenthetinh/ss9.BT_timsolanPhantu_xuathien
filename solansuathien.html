@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function seqSearch(mang, so) {
+        for ( i = 0; i < mang.length; ++i) {
+            if (mang[i] == so) {
+                return i;
+            }
+        }
+        return
+    }
+
+    function demso(mang,so) {
+        let count=0;
+        let tt=seqSearch(mang,so);
+        if (tt>-1){
+            count++;
+            for (i=tt-1 ; i>0 ; i--){
+                if (so===mang[i]){
+                    count++
+                }else {
+                break
+                }
+            }
+            for (i=tt+1;i<mang.length;i++){
+                if (mang[i]===so){
+                     count++;
+                    } else {
+                    break;
+                }
+            }
+        }
+        return count
+    }
+    let mang=[];
+    for (i=0 ; i<100 ; i++) {
+        mang[i] = Math.floor(Math.random() * 101)
+    }
+    function hienthi(mang) {
+        for (i=0 ; i< mang.length; i++){
+            document.write(mang[i]+" ");
+            if (i%10==9){
+                document.write("<br>")
+            }
+        }
+            if (i%10!=0){
+                document.write("<br>")
+            }
+    }
+    mang.sort();
+    hienthi(mang);
+    document.write("<br>");
+    let so=Number(prompt("Nhap phan tu muon dem : "))
+    let a=demso(mang,so);
+    document.write(so+"so lan suat hien la : " +a)
+</script>
+</body>
+</html>
